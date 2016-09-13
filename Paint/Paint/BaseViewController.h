@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BaseViewController.h
 //  Paint
 //
 //  Created by LLDM on 08/09/2016.
@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseView.h"
 
-@interface ViewController : UIViewController
-
+@interface BaseViewController : UIViewController <BaseViewDelegate>
 
 @end
-

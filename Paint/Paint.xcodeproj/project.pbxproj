@@ -9,13 +9,20 @@
 /* Begin PBXBuildFile section */
 		605345511D8130F6003753A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 605345501D8130F6003753A3 /* main.m */; };
 		605345541D8130F6003753A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 605345531D8130F6003753A3 /* AppDelegate.m */; };
-		605345571D8130F6003753A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 605345561D8130F6003753A3 /* ViewController.m */; };
-		6053455A1D8130F6003753A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 605345581D8130F6003753A3 /* Main.storyboard */; };
 		6053455D1D8130F6003753A3 /* Paint.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6053455B1D8130F6003753A3 /* Paint.xcdatamodeld */; };
 		6053455F1D8130F6003753A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6053455E1D8130F6003753A3 /* Assets.xcassets */; };
-		605345621D8130F6003753A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 605345601D8130F6003753A3 /* LaunchScreen.storyboard */; };
 		6053456D1D8130F6003753A3 /* PaintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6053456C1D8130F6003753A3 /* PaintTests.m */; };
 		605345781D8130F6003753A3 /* PaintUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 605345771D8130F6003753A3 /* PaintUITests.m */; };
+		605345871D813342003753A3 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 605345861D813342003753A3 /* BaseView.m */; };
+		6053458B1D81347C003753A3 /* PaintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6053458A1D81347C003753A3 /* PaintView.m */; };
+		6053458E1D8134C8003753A3 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6053458D1D8134C8003753A3 /* BaseViewController.m */; };
+		605345911D8134E5003753A3 /* PaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 605345901D8134E5003753A3 /* PaintViewController.m */; };
+		605345951D814828003753A3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 605345941D814828003753A3 /* Default-568h@2x.png */; };
+		606954C81D87A53A000D45D3 /* ToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 606954C71D87A53A000D45D3 /* ToolView.m */; };
+		606954CA1D87F15C000D45D3 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 606954C91D87F15C000D45D3 /* pencil.png */; };
+		606954CC1D87F2B8000D45D3 /* rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 606954CB1D87F2B8000D45D3 /* rectangle.png */; };
+		606954CE1D87F2F1000D45D3 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 606954CD1D87F2F1000D45D3 /* circle.png */; };
+		606954D11D88067F000D45D3 /* ColorPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 606954D01D88067F000D45D3 /* ColorPickerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,12 +47,8 @@
 		605345501D8130F6003753A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		605345521D8130F6003753A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		605345531D8130F6003753A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		605345551D8130F6003753A3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		605345561D8130F6003753A3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		605345591D8130F6003753A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6053455C1D8130F6003753A3 /* Paint.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Paint.xcdatamodel; sourceTree = "<group>"; };
 		6053455E1D8130F6003753A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		605345611D8130F6003753A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		605345631D8130F6003753A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		605345681D8130F6003753A3 /* PaintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6053456C1D8130F6003753A3 /* PaintTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaintTests.m; sourceTree = "<group>"; };
@@ -53,6 +56,22 @@
 		605345731D8130F6003753A3 /* PaintUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaintUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		605345771D8130F6003753A3 /* PaintUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaintUITests.m; sourceTree = "<group>"; };
 		605345791D8130F6003753A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		605345851D813342003753A3 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
+		605345861D813342003753A3 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		605345891D81347C003753A3 /* PaintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaintView.h; sourceTree = "<group>"; };
+		6053458A1D81347C003753A3 /* PaintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaintView.m; sourceTree = "<group>"; };
+		6053458C1D8134C8003753A3 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		6053458D1D8134C8003753A3 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		6053458F1D8134E5003753A3 /* PaintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaintViewController.h; sourceTree = SOURCE_ROOT; };
+		605345901D8134E5003753A3 /* PaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaintViewController.m; sourceTree = SOURCE_ROOT; };
+		605345941D814828003753A3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		606954C61D87A53A000D45D3 /* ToolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolView.h; sourceTree = "<group>"; };
+		606954C71D87A53A000D45D3 /* ToolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolView.m; sourceTree = "<group>"; };
+		606954C91D87F15C000D45D3 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
+		606954CB1D87F2B8000D45D3 /* rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rectangle.png; sourceTree = "<group>"; };
+		606954CD1D87F2F1000D45D3 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		606954CF1D88067F000D45D3 /* ColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorPickerView.h; sourceTree = "<group>"; };
+		606954D01D88067F000D45D3 /* ColorPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorPickerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +102,10 @@
 		605345431D8130F6003753A3 = {
 			isa = PBXGroup;
 			children = (
+				606954CD1D87F2F1000D45D3 /* circle.png */,
+				606954CB1D87F2B8000D45D3 /* rectangle.png */,
+				606954C91D87F15C000D45D3 /* pencil.png */,
+				605345941D814828003753A3 /* Default-568h@2x.png */,
 				6053454E1D8130F6003753A3 /* Paint */,
 				6053456B1D8130F6003753A3 /* PaintTests */,
 				605345761D8130F6003753A3 /* PaintUITests */,
@@ -103,13 +126,12 @@
 		6053454E1D8130F6003753A3 /* Paint */ = {
 			isa = PBXGroup;
 			children = (
-				605345521D8130F6003753A3 /* AppDelegate.h */,
-				605345531D8130F6003753A3 /* AppDelegate.m */,
-				605345551D8130F6003753A3 /* ViewController.h */,
-				605345561D8130F6003753A3 /* ViewController.m */,
-				605345581D8130F6003753A3 /* Main.storyboard */,
+				605345931D81350D003753A3 /* AppDelegate */,
+				605345881D81334F003753A3 /* BaseView */,
+				606954D41D8806B8000D45D3 /* ColorPickerView */,
+				606954D31D88069C000D45D3 /* ToolView */,
+				605345921D8134F8003753A3 /* PaintView */,
 				6053455E1D8130F6003753A3 /* Assets.xcassets */,
-				605345601D8130F6003753A3 /* LaunchScreen.storyboard */,
 				605345631D8130F6003753A3 /* Info.plist */,
 				6053455B1D8130F6003753A3 /* Paint.xcdatamodeld */,
 				6053454F1D8130F6003753A3 /* Supporting Files */,
@@ -141,6 +163,55 @@
 				605345791D8130F6003753A3 /* Info.plist */,
 			);
 			path = PaintUITests;
+			sourceTree = "<group>";
+		};
+		605345881D81334F003753A3 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				605345851D813342003753A3 /* BaseView.h */,
+				605345861D813342003753A3 /* BaseView.m */,
+				6053458C1D8134C8003753A3 /* BaseViewController.h */,
+				6053458D1D8134C8003753A3 /* BaseViewController.m */,
+			);
+			name = BaseView;
+			sourceTree = "<group>";
+		};
+		605345921D8134F8003753A3 /* PaintView */ = {
+			isa = PBXGroup;
+			children = (
+				605345891D81347C003753A3 /* PaintView.h */,
+				6053458A1D81347C003753A3 /* PaintView.m */,
+				6053458F1D8134E5003753A3 /* PaintViewController.h */,
+				605345901D8134E5003753A3 /* PaintViewController.m */,
+			);
+			name = PaintView;
+			sourceTree = "<group>";
+		};
+		605345931D81350D003753A3 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				605345521D8130F6003753A3 /* AppDelegate.h */,
+				605345531D8130F6003753A3 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		606954D31D88069C000D45D3 /* ToolView */ = {
+			isa = PBXGroup;
+			children = (
+				606954C61D87A53A000D45D3 /* ToolView.h */,
+				606954C71D87A53A000D45D3 /* ToolView.m */,
+			);
+			name = ToolView;
+			sourceTree = "<group>";
+		};
+		606954D41D8806B8000D45D3 /* ColorPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				606954CF1D88067F000D45D3 /* ColorPickerView.h */,
+				606954D01D88067F000D45D3 /* ColorPickerView.m */,
+			);
+			name = ColorPickerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,9 +317,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				605345621D8130F6003753A3 /* LaunchScreen.storyboard in Resources */,
+				606954CA1D87F15C000D45D3 /* pencil.png in Resources */,
+				606954CC1D87F2B8000D45D3 /* rectangle.png in Resources */,
+				606954CE1D87F2F1000D45D3 /* circle.png in Resources */,
 				6053455F1D8130F6003753A3 /* Assets.xcassets in Resources */,
-				6053455A1D8130F6003753A3 /* Main.storyboard in Resources */,
+				605345951D814828003753A3 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,10 +346,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				605345571D8130F6003753A3 /* ViewController.m in Sources */,
 				605345541D8130F6003753A3 /* AppDelegate.m in Sources */,
+				6053458E1D8134C8003753A3 /* BaseViewController.m in Sources */,
+				606954C81D87A53A000D45D3 /* ToolView.m in Sources */,
+				605345871D813342003753A3 /* BaseView.m in Sources */,
 				6053455D1D8130F6003753A3 /* Paint.xcdatamodeld in Sources */,
+				6053458B1D81347C003753A3 /* PaintView.m in Sources */,
+				605345911D8134E5003753A3 /* PaintViewController.m in Sources */,
 				605345511D8130F6003753A3 /* main.m in Sources */,
+				606954D11D88067F000D45D3 /* ColorPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,25 +388,6 @@
 			targetProxy = 605345741D8130F6003753A3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		605345581D8130F6003753A3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				605345591D8130F6003753A3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		605345601D8130F6003753A3 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				605345611D8130F6003753A3 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6053457A1D8130F6003753A3 /* Debug */ = {
@@ -419,10 +478,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = Paint/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchlabs.Paint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -430,10 +492,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = Paint/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.launchlabs.Paint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -502,6 +567,7 @@
 				6053457E1D8130F6003753A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6053457F1D8130F6003753A3 /* Build configuration list for PBXNativeTarget "PaintTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +576,7 @@
 				605345811D8130F6003753A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		605345821D8130F6003753A3 /* Build configuration list for PBXNativeTarget "PaintUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +585,7 @@
 				605345841D8130F6003753A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

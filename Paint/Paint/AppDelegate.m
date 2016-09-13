@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PaintViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.autoresizesSubviews=YES;
+    PaintViewController *paintViewController = [[PaintViewController alloc] init];
+    UINavigationController *Nav = [[UINavigationController alloc] initWithRootViewController:paintViewController];
+    self.window.rootViewController = Nav;
+    [self.window makeKeyAndVisible];
+    
+    application.statusBarStyle = UIStatusBarStyleLightContent;
+    
     return YES;
 }
 
