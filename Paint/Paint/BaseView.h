@@ -18,6 +18,7 @@
 + (UIColor *)colorWithHexString:(NSString *)hex;
 + (void)setUINaviagtionBar:(UINavigationBar *)navBar barTintColor:(UIColor *)barTintColor tintColor:(UIColor *)tintColor translucent:(BOOL)trans;
 + (UIColor *)changeOpacity:(UIColor*)color amount:(CGFloat)amount;
+- (UIColor *) colorOfPoint:(CGPoint)point;
 
 @end
 

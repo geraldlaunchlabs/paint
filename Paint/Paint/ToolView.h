@@ -8,8 +8,18 @@
 
 #import "BaseView.h"
 
+@protocol ToolViewDelegate;
+
 @interface ToolView : BaseView
 
+@property (nonatomic) id <ToolViewDelegate> toolViewDelegate;
 - (id)initWithTools:(NSArray *)tools;
+
+@end
+
+
+@protocol ToolViewDelegate <NSObject>
+
+- (IBAction)toolChange:(id)sender;
 
 @end

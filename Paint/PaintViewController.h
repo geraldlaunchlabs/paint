@@ -7,15 +7,13 @@
 //
 
 #import "BaseViewController.h"
-#import "PaintView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "PaintView.h"
+#import "ColorPickerView.h"
 
-@interface PaintViewController : BaseViewController <PaintViewDelegate> {
+@interface PaintViewController : BaseViewController <PaintViewDelegate,ColorPickerDelegate> {
     PaintView *paintView;
-    NSMutableArray *lines;
-    CGPoint pointA, pointB;
-    BOOL activeLine;
-    int tool;
+    ColorPickerView *colorPicker;
 }
 
 @end

@@ -8,7 +8,9 @@
 
 #import "PaintViewController.h"
 
-@interface PaintViewController ()
+@interface PaintViewController () {
+    int tool;
+}
 
 @end
 
@@ -23,74 +25,93 @@
     paintView = [PaintView new];
     paintView.baseViewDelegate = self;
     paintView.paintViewDelegate = self;
+    colorPicker.colorPickerDelegate = self;
     
     [paintView setupLayout];
-    [paintView setupToolBar:[self getTools]];
+    [paintView setupPaintViewWithTools:[self getTools]];
     
     self.view = paintView;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [BaseView setUINaviagtionBar:self.navigationController.navigationBar
-                    barTintColor:[BaseView colorWithHexString:@"0352B6"]
+                    barTintColor:[BaseView colorWithHexString:@"505050"]
                        tintColor:[UIColor whiteColor]
                      translucent:NO];
 }
 
 - (NSArray *)getTools{
-    NSArray *tools = [NSArray arrayWithObjects:
-                     [NSDictionary dictionaryWithObjectsAndKeys:
-                      @"pencil",@"tool",
-                      @"pencil.png",@"icon",
-                      nil],
-                     
-                     [NSDictionary dictionaryWithObjectsAndKeys:
-                      @"rectangle",@"tool",
-                      @"rectangle.png",@"icon",
-                      nil],
-                     
-                     [NSDictionary dictionaryWithObjectsAndKeys:
-                      @"circle",@"tool",
-                      @"circle.png",@"icon",
-                      nil],
-                     nil];
+    NSArray *tools = @[@"pencil",@"line",@"rectangle",@"circle",@"fill",@"undo"];
     return tools;
 }
 
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
-    pointA = [touch locationInView:self.view];
+    [paintView setPointA:[touch locationInView:paintView.canvass]];
+    [paintView newDrawing:YES];
+    if(tool == 5) [paintView fillTool];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
-    pointB = [touch locationInView:self.view];
+    [paintView setPointB:[touch locationInView:paintView.canvass]];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
-    pointB = [touch locationInView:self.view];
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(pointB.x,pointB.y)];
-    [path addLineToPoint:CGPointMake(pointA.x,pointA.y)];
-    pointA=pointB;
-    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = [path CGPath];
-    shapeLayer.strokeColor = [[UIColor blueColor] CGColor];
-    shapeLayer.lineWidth = 3.0;
-    shapeLayer.fillColor = [[UIColor redColor] CGColor];
-    [self.view.layer addSublayer:shapeLayer];
-    [self.view setNeedsDisplay];
+    [paintView setPointB:[touch locationInView:paintView.canvass]];
+    [self draw];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)draw {
+    switch(tool) {
+        default: [paintView pencilTool];
+            break;
+        case 2: [paintView lineTool];
+            break;
+        case 3: [paintView rectangleTool];
+            break;
+        case 4: [paintView circleTool];
+            break;
+        case 5: break;
+    }
 }
-*/
+
+#pragma mark - Color Change
+
+- (IBAction)colorChange:(id)sender {
+    static float r = 0, g = 0, b = 0;
+    UISlider *colorSlider = (UISlider *)sender;
+    switch(colorSlider.tag) {
+        case 1:
+            r = colorSlider.value;
+            colorSlider.thumbTintColor = [UIColor colorWithRed:r/255.0 green:0 blue:0 alpha:1];
+            break;
+        case 2:
+            g = colorSlider.value;
+            colorSlider.thumbTintColor = [UIColor colorWithRed:0 green:g/255.0 blue:0 alpha:1];
+            break;
+        case 3:
+            b = colorSlider.value;
+            colorSlider.thumbTintColor = [UIColor colorWithRed:0 green:0 blue:b/255.0 alpha:1];
+            break;
+        default:break;
+    }
+    
+    colorSlider.tintColor = colorSlider.thumbTintColor;
+    
+    UIColor *color = [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1];
+    paintView.colorPickerView.colorPreview.backgroundColor = color;
+    [paintView setColor: color];
+}
+
+#pragma mark - Tool Change
+
+- (IBAction)toolChange:(id)sender {
+    int toolTag = (int)((UIButton *)sender).tag;
+    if(toolTag == 6) [paintView undoDrawing];
+    else tool = toolTag;
+}
 
 @end

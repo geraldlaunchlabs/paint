@@ -8,6 +8,17 @@
 
 #import "BaseView.h"
 
+@protocol ColorPickerDelegate;
+
 @interface ColorPickerView : BaseView
+
+@property (nonatomic) id <ColorPickerDelegate> colorPickerDelegate;
+@property (nonatomic) IBOutlet UIView *colorPreview;
+@end
+
+
+@protocol ColorPickerDelegate <NSObject>
+
+- (IBAction)colorChange:(id)sender;
 
 @end

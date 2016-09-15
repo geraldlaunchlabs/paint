@@ -10,6 +10,7 @@
 
 @implementation ToolView
 
+@synthesize toolViewDelegate;
 
 - (id)initWithTools:(NSArray *)tools {
     if ((self = [super init])) {
@@ -19,13 +20,12 @@
         for(int i=0; i<tools.count;) {
             UIButton *tool = [UIButton new];
             tool.translatesAutoresizingMaskIntoConstraints = NO;
-            [tool setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",tools[i][@"tool"]]] forState:UIControlStateNormal];
+            [tool setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",tools[i]]] forState:UIControlStateNormal];
             tool.imageView.contentMode = UIViewContentModeScaleAspectFit;
-            [tool setTitle:tools[i][@"tool"] forState:UIControlStateNormal];
+            [tool setTitle:tools[i] forState:UIControlStateNormal];
             tool.tag = ++i;
+            [tool addTarget:toolViewDelegate action:@selector(toolChange:) forControlEvents:UIControlEventTouchDown];
             [self addSubview:tool];
-            
-            //NSLog(@"\n\n\n%d",i);
             
             [self addConstraint:[NSLayoutConstraint constraintWithItem:tool
                                                              attribute:NSLayoutAttributeTop

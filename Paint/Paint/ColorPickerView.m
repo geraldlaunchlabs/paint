@@ -10,34 +10,51 @@
 
 @implementation ColorPickerView
 
+@synthesize colorPickerDelegate,colorPreview;
+
 - (id)init {
     if ((self = [super init])) {
-        UIView *r = [UIView new];
+        UISlider *r = [UISlider new];
         r.translatesAutoresizingMaskIntoConstraints = NO;
-//        r.minimumValue = 0.0;
-//        r.maximumValue = 255.0;
-        r.backgroundColor = [UIColor redColor];
+        r.minimumValue = 0.0;
+        r.maximumValue = 255.0;
+        r.maximumTrackTintColor = [UIColor redColor];
+        r.thumbTintColor = [UIColor blackColor];
+        r.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.75,0.75);
+        r.tag = 1;
+        [r addTarget:colorPickerDelegate action:@selector(colorChange:) forControlEvents:UIControlEventValueChanged];
         [self addSubview:r];
         
-        UIView *g = [UIView new];
+        UISlider *g = [UISlider new];
         g.translatesAutoresizingMaskIntoConstraints = NO;
-//        g.minimumValue = 0.0;
-//        g.maximumValue = 255.0;
-        g.backgroundColor = [UIColor greenColor];
+        g.minimumValue = 0.0;
+        g.maximumValue = 255.0;
+        g.maximumTrackTintColor = [UIColor greenColor];
+        g.thumbTintColor = [UIColor blackColor];
+        g.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.75,0.75);
+        g.tag = 2;
+        [g addTarget:colorPickerDelegate action:@selector(colorChange:) forControlEvents:UIControlEventValueChanged];
         [self addSubview:g];
         
-        UIView *b = [UIView new];
+        UISlider *b = [UISlider new];
         b.translatesAutoresizingMaskIntoConstraints = NO;
-//        b.minimumValue = 0.0;
-//        b.maximumValue = 255.0;
-        b.backgroundColor = [UIColor blueColor];
+        b.minimumValue = 0.0;
+        b.maximumValue = 255.0;
+        b.maximumTrackTintColor = [UIColor blueColor];
+        b.thumbTintColor = [UIColor blackColor];
+        b.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.75,0.75);
+        b.tag = 3;
+        [b addTarget:colorPickerDelegate action:@selector(colorChange:) forControlEvents:UIControlEventValueChanged];
         [self addSubview:b];
         
-        UIView *color = [UIView new];
-        b.translatesAutoresizingMaskIntoConstraints = NO;
-        [self addSubview:color];
-        
-        
+        colorPreview = [UIView new];
+        colorPreview.translatesAutoresizingMaskIntoConstraints = NO;
+        colorPreview.backgroundColor = [UIColor blackColor];
+        colorPreview.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.6,0.6);
+        colorPreview.tag = 4;
+        [self addSubview:colorPreview];
+
+
         [self addConstraint:[NSLayoutConstraint constraintWithItem:r
                                                          attribute:NSLayoutAttributeTop
                                                          relatedBy:NSLayoutRelationEqual
@@ -127,14 +144,14 @@
                                                           constant:0]];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:b
-                                                         attribute:NSLayoutAttributeWidth
+                                                         attribute:NSLayoutAttributeRight
                                                          relatedBy:NSLayoutRelationEqual
-                                                            toItem:color
-                                                         attribute:NSLayoutAttributeWidth
+                                                            toItem:colorPreview
+                                                         attribute:NSLayoutAttributeLeft
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:color
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:colorPreview
                                                          attribute:NSLayoutAttributeTop
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:b
@@ -142,7 +159,7 @@
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:color
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:colorPreview
                                                          attribute:NSLayoutAttributeBottom
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:b
@@ -150,7 +167,7 @@
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:color
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:colorPreview
                                                          attribute:NSLayoutAttributeRight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
@@ -158,11 +175,11 @@
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:color
-                                                         attribute:NSLayoutAttributeLeft
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:colorPreview
+                                                         attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual
-                                                            toItem:b
-                                                         attribute:NSLayoutAttributeRight
+                                                            toItem:colorPreview
+                                                         attribute:NSLayoutAttributeHeight
                                                         multiplier:1
                                                           constant:0]];
     }

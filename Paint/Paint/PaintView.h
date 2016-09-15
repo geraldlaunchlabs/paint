@@ -15,16 +15,28 @@
 
 
 @interface PaintView : BaseView {
-    NSMutableArray *lines;
     CGPoint pointA, pointB;
-    BOOL activeLine;
-    BaseView *tool;
+    UIColor *color;
+    BOOL newDrawing;
 }
 
-@property (nonatomic) id <PaintViewDelegate> paintViewDelegate;
+@property(nonatomic) id <PaintViewDelegate> paintViewDelegate;
+@property(nonatomic) ToolView *toolView;
+@property(nonatomic) ColorPickerView *colorPickerView;
+@property(nonatomic) UIView *canvass;
 
-- (void)setTool:(int)selectedTool;
-- (void)setupToolBar:(NSArray *)tools;
+- (void)setupPaintViewWithTools:(NSArray *)tools;
+- (void)setColor:(UIColor *)thisColor;
+- (void)setPointA:(CGPoint)point;
+- (void)setPointB:(CGPoint)point;
+- (void)newDrawing:(BOOL)ans;
+
+- (void)pencilTool;
+- (void)lineTool;
+- (void)rectangleTool;
+- (void)circleTool;
+- (void)fillTool;
+- (void)undoDrawing;
 
 @end
 
