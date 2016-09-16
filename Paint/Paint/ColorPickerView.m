@@ -10,7 +10,7 @@
 
 @implementation ColorPickerView
 
-@synthesize colorPickerDelegate,colorPreview;
+@synthesize colorPickerDelegate;
 
 - (id)init {
     if ((self = [super init])) {
@@ -47,12 +47,31 @@
         [b addTarget:colorPickerDelegate action:@selector(colorChange:) forControlEvents:UIControlEventValueChanged];
         [self addSubview:b];
         
-        colorPreview = [UIView new];
-        colorPreview.translatesAutoresizingMaskIntoConstraints = NO;
-        colorPreview.backgroundColor = [UIColor blackColor];
-        colorPreview.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.6,0.6);
-        colorPreview.tag = 4;
-        [self addSubview:colorPreview];
+        UIButton *color1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        color1.translatesAutoresizingMaskIntoConstraints = NO;
+        color1.backgroundColor = [UIColor blackColor];
+        color1.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.6,0.6);
+        color1.layer.shadowColor = [UIColor whiteColor].CGColor;
+        color1.layer.shadowRadius = 0;
+        color1.layer.shadowOpacity = 0.9;
+        color1.layer.shadowOffset = CGSizeZero;
+        color1.layer.masksToBounds = NO;
+        color1.tag = 4;
+        [color1 addTarget:colorPickerDelegate action:@selector(pickColorNum:) forControlEvents:UIControlEventTouchDown];
+        [self addSubview:color1];
+        
+        UIButton *color2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        color2.translatesAutoresizingMaskIntoConstraints = NO;
+        color2.backgroundColor = [UIColor blackColor];
+        color2.transform = CGAffineTransformScale(CGAffineTransformIdentity,0.6,0.6);
+        color2.layer.shadowColor = [UIColor whiteColor].CGColor;
+        color2.layer.shadowRadius = 0;
+        color2.layer.shadowOpacity = 0.9;
+        color2.layer.shadowOffset = CGSizeZero;
+        color2.layer.masksToBounds = NO;
+        color2.tag = 5;
+        [color2 addTarget:colorPickerDelegate action:@selector(pickColorNum:) forControlEvents:UIControlEventTouchDown];
+        [self addSubview:color2];
 
 
         [self addConstraint:[NSLayoutConstraint constraintWithItem:r
@@ -146,12 +165,12 @@
         [self addConstraint:[NSLayoutConstraint constraintWithItem:b
                                                          attribute:NSLayoutAttributeRight
                                                          relatedBy:NSLayoutRelationEqual
-                                                            toItem:colorPreview
+                                                            toItem:color1
                                                          attribute:NSLayoutAttributeLeft
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:colorPreview
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:color1
                                                          attribute:NSLayoutAttributeTop
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:b
@@ -159,7 +178,7 @@
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:colorPreview
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:color1
                                                          attribute:NSLayoutAttributeBottom
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:b
@@ -167,7 +186,39 @@
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:colorPreview
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:color1
+                                                         attribute:NSLayoutAttributeLeft
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:b
+                                                         attribute:NSLayoutAttributeRight
+                                                        multiplier:1
+                                                          constant:0]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:color1
+                                                         attribute:NSLayoutAttributeRight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:color2
+                                                         attribute:NSLayoutAttributeLeft
+                                                        multiplier:1
+                                                          constant:0]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:color2
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:color1
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1
+                                                          constant:0]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:color2
+                                                         attribute:NSLayoutAttributeBottom
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:color1
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1
+                                                          constant:0]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:color2
                                                          attribute:NSLayoutAttributeRight
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
@@ -175,15 +226,23 @@
                                                         multiplier:1
                                                           constant:0]];
         
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:colorPreview
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:color2
                                                          attribute:NSLayoutAttributeWidth
                                                          relatedBy:NSLayoutRelationEqual
-                                                            toItem:colorPreview
+                                                            toItem:color2
                                                          attribute:NSLayoutAttributeHeight
                                                         multiplier:1
                                                           constant:0]];
     }
     return self;
+}
+
++ (void)selectColorBox:(UIButton *)colorBox {
+    colorBox.layer.shadowRadius = 10.0;
+}
+
++ (void)deSelectColorBox:(UIButton *)colorBox {
+    colorBox.layer.shadowRadius = 0;
 }
 
 @end

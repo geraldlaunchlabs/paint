@@ -18,11 +18,17 @@
         UIView *prevTool = self;
         
         for(int i=0; i<tools.count;) {
-            UIButton *tool = [UIButton new];
+            UIButton *tool = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             tool.translatesAutoresizingMaskIntoConstraints = NO;
             [tool setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",tools[i]]] forState:UIControlStateNormal];
             tool.imageView.contentMode = UIViewContentModeScaleAspectFit;
             [tool setTitle:tools[i] forState:UIControlStateNormal];
+            tool.tintColor = [UIColor blackColor];
+            tool.imageView.layer.shadowColor = [UIColor whiteColor].CGColor;
+            tool.imageView.layer.shadowRadius = 0;
+            tool.imageView.layer.shadowOpacity = 0.9;
+            tool.imageView.layer.shadowOffset = CGSizeZero;
+            tool.imageView.layer.masksToBounds = NO;
             tool.tag = ++i;
             [tool addTarget:toolViewDelegate action:@selector(toolChange:) forControlEvents:UIControlEventTouchDown];
             [self addSubview:tool];
@@ -83,6 +89,16 @@
         }
     }
     return self;
+}
+
++ (void) selectToolButton:(UIButton *)tool {
+    tool.tintColor = [BaseView colorWithHexString:@"A0A0A0"];
+    tool.imageView.layer.shadowRadius = 1.0;
+}
+
++ (void) deSelectToolButton:(UIButton *)tool {
+    tool.tintColor = [UIColor blackColor];
+    tool.imageView.layer.shadowRadius = 0;
 }
 
 @end

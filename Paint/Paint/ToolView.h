@@ -13,7 +13,10 @@
 @interface ToolView : BaseView
 
 @property (nonatomic) id <ToolViewDelegate> toolViewDelegate;
+
 - (id)initWithTools:(NSArray *)tools;
++ (void) selectToolButton:(UIButton *)tool;
++ (void) deSelectToolButton:(UIButton *)tool;
 
 @end
 

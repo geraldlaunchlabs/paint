@@ -16,7 +16,7 @@
 
 @interface PaintView : BaseView {
     CGPoint pointA, pointB;
-    UIColor *color;
+    UIColor *color1, *color2;
     BOOL newDrawing;
 }
 
@@ -26,7 +26,8 @@
 @property(nonatomic) UIView *canvass;
 
 - (void)setupPaintViewWithTools:(NSArray *)tools;
-- (void)setColor:(UIColor *)thisColor;
+- (void)setColor1:(UIColor *)thisColor;
+- (void)setColor2:(UIColor *)thisColor;
 - (void)setPointA:(CGPoint)point;
 - (void)setPointB:(CGPoint)point;
 - (void)newDrawing:(BOOL)ans;

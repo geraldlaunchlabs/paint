@@ -10,10 +10,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import "PaintView.h"
 #import "ColorPickerView.h"
+#import "ToolView.h"
 
-@interface PaintViewController : BaseViewController <PaintViewDelegate,ColorPickerDelegate> {
+@interface PaintViewController : BaseViewController <PaintViewDelegate,ColorPickerDelegate,ToolViewDelegate> {
     PaintView *paintView;
     ColorPickerView *colorPicker;
+    ToolView *toolView;
 }
 
 @end

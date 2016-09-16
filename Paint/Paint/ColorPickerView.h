@@ -13,12 +13,15 @@
 @interface ColorPickerView : BaseView
 
 @property (nonatomic) id <ColorPickerDelegate> colorPickerDelegate;
-@property (nonatomic) IBOutlet UIView *colorPreview;
++ (void)selectColorBox:(UIButton *)colorNum;
++ (void)deSelectColorBox:(UIButton *)colorNum;
+
 @end
 
 
 @protocol ColorPickerDelegate <NSObject>
 
+- (IBAction)pickColorNum:(id)sender;
 - (IBAction)colorChange:(id)sender;
 
 @end

@@ -10,6 +10,7 @@
 
 @interface PaintViewController () {
     int tool;
+    int colorNum;
 }
 
 @end
@@ -26,6 +27,7 @@
     paintView.baseViewDelegate = self;
     paintView.paintViewDelegate = self;
     colorPicker.colorPickerDelegate = self;
+    toolView.toolViewDelegate = self;
     
     [paintView setupLayout];
     [paintView setupPaintViewWithTools:[self getTools]];
@@ -38,13 +40,20 @@
                     barTintColor:[BaseView colorWithHexString:@"505050"]
                        tintColor:[UIColor whiteColor]
                      translucent:NO];
+    
+    colorNum = 4;
+    tool = 1;
+}
+
+- (void)viewDidLayoutSubviews {
+    [ColorPickerView selectColorBox:[paintView.colorPickerView viewWithTag:colorNum]];
+    [ToolView selectToolButton:[paintView.toolView viewWithTag:1]];
 }
 
 - (NSArray *)getTools{
     NSArray *tools = @[@"pencil",@"line",@"rectangle",@"circle",@"fill",@"undo"];
     return tools;
 }
-
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
@@ -78,6 +87,14 @@
     }
 }
 
+#pragma mark - Pick Color Num
+
+- (IBAction)pickColorNum:(id)sender {
+    [ColorPickerView deSelectColorBox:[paintView.colorPickerView viewWithTag:colorNum]];
+    colorNum = (int)((UIButton *)sender).tag;
+    [ColorPickerView selectColorBox:[paintView.colorPickerView viewWithTag:colorNum]];
+}
+
 #pragma mark - Color Change
 
 - (IBAction)colorChange:(id)sender {
@@ -102,16 +119,24 @@
     colorSlider.tintColor = colorSlider.thumbTintColor;
     
     UIColor *color = [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1];
-    paintView.colorPickerView.colorPreview.backgroundColor = color;
-    [paintView setColor: color];
+    [paintView.colorPickerView viewWithTag:colorNum].backgroundColor = color;
+    if(colorNum == 4) [paintView setColor1: color];
+    else [paintView setColor2: color];
 }
 
 #pragma mark - Tool Change
 
 - (IBAction)toolChange:(id)sender {
-    int toolTag = (int)((UIButton *)sender).tag;
-    if(toolTag == 6) [paintView undoDrawing];
-    else tool = toolTag;
+    static UIButton *prevTool = nil;
+    if(prevTool == nil) prevTool = [paintView.toolView viewWithTag:tool];
+    UIButton *selectedTool = (UIButton *)sender;
+    if(selectedTool.tag == 6) [paintView undoDrawing];
+    else {
+        tool = (int)selectedTool.tag;
+        [ToolView deSelectToolButton:prevTool];
+        [ToolView selectToolButton:selectedTool];
+        prevTool = (UIButton *)sender;
+    }
 }
 
 @end
